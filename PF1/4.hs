@@ -4,10 +4,11 @@
 --En Haskell estas funciones se llaman head y tail respectivamente.
 
 esVacia :: [a] -> Bool
-esVacia lista = null lista
+esVacia [] = True
+esVacia lista = False
 
 cabeza :: [a] -> a
-cabeza lista = head lista
+cabeza (x:ys) = x
 
 cola :: [a] -> [a]
-cola lista = tail lista
+cola (x:ys) = ys

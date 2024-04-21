@@ -1,36 +1,51 @@
+-- length
 long :: [a] -> Int
-long lista = length lista
+long [] = 0
+long (x:ys) = 1 + (long ys)
 
+-- sum
 sumaLista :: [Int] -> Int
-sumaLista lista = sum lista
+sumaLista [] = 0
+sumaLista (x:ys) = x + (sumaLista ys)
 
+-- mem
 member :: Int -> [Int] -> Bool
-member n lista = elem n lista
+member n [] = False
+member n (x:ys) = if x == n then True else member n ys
 
+-- ++
 append :: [a] -> [a] -> [a]
-append lista1 lista2 = lista1 ++ lista2
+append [] lista2 = lista2
+append (x:xs) lista2 = x : append xs lista2
 
+-- take
 tomar :: Int -> [a] -> [a]
-tomar n lista = take n lista
+tomar 0 lista = []
+tomar n (x:xs) = x : tomar (n-1) xs
 
+-- !!
 term :: Int -> [a] -> a
-term n lista = lista !! n
+term 0 (x:xs) = x
+term n (x:xs) = term (n - 1) xs
 
+-- reverse
 rev :: [a] -> [a]
-rev lista = reverse lista
+rev [] = []
+rev (x:xs) = append (rev xs) (x:[])
 
+-- maximum
+max :: Int -> Int -> Int
+max n m = if n > m then n else m
+
+-- maximum
 maxl :: [Int] -> Int
-maxl lista = maximum lista
+maxl [] = 0
+maxl (x:xs) = Main.max x (maxl xs)
 
 cuenta :: Eq a => a -> [a] -> Int
 cuenta el [] = 0
 cuenta el lista = if head lista == el then 1 + cuenta el (tail lista) else cuenta el (tail lista)
 
 repite :: Int -> a -> [a]
-repite n elemento = replicate n elemento
-
-repite2 :: Int -> a -> [a]
-repite2 0 elemento = []
-repite2 n elemento = elemento : repite2 (n-1) elemento
-
-
+repite 0 elemento = []
+repite n elemento = elemento : repite (n-1) elemento
