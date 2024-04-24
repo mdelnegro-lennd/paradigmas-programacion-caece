@@ -4,15 +4,20 @@ izquierda pivote (x:xs) = if x < pivote then x : izquierda pivote xs else izquie
 
 derecha :: Int -> [Int] -> [Int]
 derecha pivote [] = []
-derecha pivote (x:xs) = if x >= pivote then x : derecha pivote xs else derecha pivote xs
+derecha pivote (x:xs) = if x > pivote then x : derecha pivote xs else derecha pivote xs
 
-combinar :: [Int] -> [Int] -> [Int]
-combinar [] lista2 = lista2
-combinar (x:xs) lista2 = x : combinar xs lista2
+combinar :: [Int] -> Int -> [Int] -> [Int]
+combinar [] pivote [] = [pivote]
+combinar [] pivote lista2 = pivote : lista2
+combinar (x:xs) pivote lista2 = x : combinar xs pivote lista2
+
+pivotar :: [Int] -> Int
+pivotar lista = head lista
 
 partir :: [Int] -> [Int]
 partir [] = []
-partir lista = combinar (partir (izquierda (head lista) lista)) (partir (derecha (head lista) lista))
+--partir lista = partir (derecha (pivotar lista) lista)
+partir lista = combinar (partir (izquierda (pivotar lista) lista)) (pivotar lista) (partir (derecha (pivotar lista) lista))
 
 quicksort :: [Int] -> [Int]
 quicksort lista = partir lista
