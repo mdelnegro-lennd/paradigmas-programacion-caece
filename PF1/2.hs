@@ -1,9 +1,3 @@
---i)	Definir la función max, que dados dos números devuelve el máximo de los dos. 
---En Haskell esta función está predefinida para los tipos ordenados y se llama también max.
---ii)	Definir la función max3, que dados tres números devuelve el máximo de los tres. Usar max.
---iii)	Definir la función min, que dados dos números devuelve el mínimo de los dos. 
---En Haskell esta función está predefinida para los tipos ordenados y se llama también min. Usar max.
-
 max :: Int -> Int -> Int
 max n m = if n > m then n else m
 
