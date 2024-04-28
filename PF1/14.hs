@@ -16,7 +16,6 @@ pivotar lista = head lista
 
 partir :: [Int] -> [Int]
 partir [] = []
---partir lista = partir (derecha (pivotar lista) lista)
 partir lista = combinar (partir (izquierda (pivotar lista) lista)) (pivotar lista) (partir (derecha (pivotar lista) lista))
 
 quicksort :: [Int] -> [Int]
