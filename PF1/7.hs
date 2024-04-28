@@ -4,8 +4,12 @@ esVacia [] = True
 esVacia lista = False
 
 ultimo :: [a] -> a
-ultimo (x:xs) = if esVacia xs then x else ultimo xs
+ultimo (x:xs) 
+    | null xs = x 
+    | otherwise = ultimo xs
 
 sacarUltimo :: [a] -> [a]
 sacarUltimo [x] = []
-sacarUltimo (x:xs) = if esVacia xs then [] else x : sacarUltimo xs
+sacarUltimo (x:xs) 
+    | null xs = [] 
+    | otherwise = x : sacarUltimo xs

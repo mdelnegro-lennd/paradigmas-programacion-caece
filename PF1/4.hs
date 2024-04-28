@@ -3,7 +3,7 @@ esVacia [] = True
 esVacia lista = False
 
 cabeza :: [a] -> a
-cabeza (x:ys) = x
+cabeza (x:_) = x
 
 cola :: [a] -> [a]
-cola (x:ys) = ys
+cola (_:ys) = ys
